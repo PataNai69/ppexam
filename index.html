@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computing Ethics & Professional Practice — 300 MCQs</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f5;padding:20px;color:#1a1a1a}
+.wrap{max-width:860px;margin:0 auto}
+.hdr{background:linear-gradient(135deg,#1565c0,#0d47a1);color:#fff;border-radius:12px;padding:20px 24px;margin-bottom:18px}
+.hdr h1{font-size:20px;font-weight:700;margin-bottom:4px}
+.hdr p{font-size:13px;opacity:.85}
+#pginfo{font-size:13px;opacity:.85;margin-top:4px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.stat{background:#fff;border-radius:10px;border:1px solid #e0e0e0;padding:14px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.sv{font-size:26px;font-weight:700;color:#1a1a1a}
+.sl{font-size:12px;color:#888;margin-top:3px}
+.pbar{height:6px;background:#e0e0e0;border-radius:3px;margin-bottom:14px;overflow:hidden}
+.pfill{height:100%;background:linear-gradient(90deg,#1565c0,#42a5f5);border-radius:3px;transition:width .3s}
+.ctls{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.btn{background:#fff;border:1px solid #ccc;border-radius:8px;padding:8px 18px;font-size:13px;cursor:pointer;color:#333;font-weight:500;transition:background .15s}
+.btn:hover{background:#f0f0f0}
+.btn.pri{background:#1565c0;color:#fff;border-color:#1565c0}
+.btn.pri:hover{background:#1976d2}
+.btn.sec{background:#e8f5e9;color:#2e7d32;border-color:#a5d6a7}
+.btn.prep{background:#fff3e0;color:#e65100;border-color:#ffb74d}
+.btn.prep:hover{background:#ffe0b2}
+.btn.prep.active{background:#e65100;color:#fff;border-color:#e65100}
+.btn.qzm{background:#f3e5f5;color:#6a1b9a;border-color:#ce93d8}
+.btn.qzm:hover{background:#e1bee7}
+.btn.qzm.active{background:#6a1b9a;color:#fff;border-color:#6a1b9a}
+.qcard{background:#fff;border:1px solid #e0e0e0;border-radius:12px;padding:18px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.qnum{font-size:11px;font-weight:700;color:#1565c0;margin-bottom:6px;letter-spacing:.06em;text-transform:uppercase}
+.qtxt{font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:13px;line-height:1.55}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{background:#fafafa;border:1.5px solid #e0e0e0;border-radius:8px;padding:10px 14px;font-size:13px;color:#333;cursor:pointer;text-align:left;display:flex;align-items:flex-start;gap:10px;transition:background .12s,border-color .12s;line-height:1.4}
+.opt:hover:not(:disabled){background:#e3f2fd;border-color:#90caf9}
+.ok{font-weight:700;color:#1565c0;min-width:22px;flex-shrink:0}
+.opt.corr{background:#e8f5e9;border-color:#4caf50;color:#1b5e20}
+.opt.corr .ok{color:#2e7d32}
+.opt.wrng{background:#ffebee;border-color:#ef5350;color:#b71c1c}
+.opt.wrng .ok{color:#c62828}
+.opt.shwc{background:#e8f5e9;border-color:#4caf50;color:#1b5e20}
+.opt.shwc .ok{color:#2e7d32}
+.opt.prep-corr{background:#e8f5e9;border-color:#4caf50;color:#1b5e20;font-weight:700}
+.opt.prep-corr .ok{color:#2e7d32}
+.fb{margin-top:10px;font-size:13px;padding:8px 12px;border-radius:8px;font-weight:500}
+.fb.ok{background:#e8f5e9;color:#1b5e20;border-left:4px solid #4caf50}
+.fb.no{background:#ffebee;color:#b71c1c;border-left:4px solid #ef5350}
+.section-badge{display:inline-block;background:#e3f2fd;color:#1565c0;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:8px;letter-spacing:.05em;text-transform:uppercase}
+/* Quiz Mode styles */
+.quiz-mark-area{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.quiz-opt-btn{padding:7px 14px;border-radius:8px;border:1.5px solid #e0e0e0;background:#fafafa;color:#333;font-size:13px;font-weight:600;cursor:pointer;transition:background .12s;text-align:left;width:100%;display:block}
+.quiz-opt-btn:hover:not(:disabled){background:#e3f2fd;border-color:#90caf9}
+.quiz-opt-btn.selected{background:#6a1b9a;color:#fff;border-color:#6a1b9a}
+.quiz-opt-btn.result-corr{background:#e8f5e9;color:#1b5e20;border-color:#4caf50}
+.quiz-opt-btn.result-wrng{background:#ffebee;color:#b71c1c;border-color:#ef5350}
+.quiz-check-btn{padding:7px 16px;border-radius:8px;border:1.5px solid #1565c0;background:#e3f2fd;color:#1565c0;font-size:13px;font-weight:700;cursor:pointer;margin-left:4px}
+.quiz-check-btn:hover{background:#1565c0;color:#fff}
+.mode-banner{padding:10px 16px;border-radius:10px;font-size:13px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.mode-banner.prep{background:#fff3e0;color:#e65100;border:1.5px solid #ffb74d}
+.mode-banner.quiz{background:#f3e5f5;color:#6a1b9a;border:1.5px solid #ce93d8}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hdr">
+  <h1>Computing Ethics &amp; Professional Practice - Pata Nai</h1>
+  <p>CLO-3 &amp; CLO-4 | Scope of Computing | Professional Traits | IEEE–ACM Code of Ethics | Accountability | Social Applications</p>
+  <div id="pginfo">Total Questions: 300</div>
+</div>
+<div class="stats">
+  <div class="stat"><div class="sv" id="stot">300</div><div class="sl">Total Questions</div></div>
+  <div class="stat"><div class="sv" id="scor" style="color:#2e7d32">0</div><div class="sl">✓ Correct</div></div>
+  <div class="stat"><div class="sv" id="swrg" style="color:#c62828">0</div><div class="sl">✗ Wrong</div></div>
+</div>
+<div class="pbar"><div class="pfill" id="prog" style="width:0%"></div></div>
+<div class="ctls">
+  <button class="btn pri" onclick="resetAll()">↺ Restart</button>
+  <button class="btn prep" id="prepBtn" onclick="togglePrep()">📖 Preparation Mode</button>
+  <button class="btn qzm" id="qzmBtn" onclick="toggleQuiz()">✏️ Quiz Mode</button>
+</div>
+<div id="modeBanner"></div>
+<div id="qa"></div>
+</div>
+
+<script>
+const K=['A','B','C','D','E'];
+let answered,corr,wrng;
+let prepMode=false;
+let quizMode=false;
+let quizSelections={};   // quizSelections[i] = j (index user marked)
+let quizChecked={};      // quizChecked[i] = true after check
+
+const raw=[
+// ===== SECTION 1: SCOPE OF COMPUTING (Q1-30) =====
+{s:"Scope of Computing",q:"Which of the following domains is projected to have the highest employment growth for computing graduates in 2026?",o:["Mainframe maintenance","Manual software testing","Legacy system documentation","Hardware soldering","Artificial Intelligence and Machine Learning"],a:4},
+{s:"Scope of Computing",q:"A graduate with strong skills in Python, TensorFlow, and LLMs would most likely work as a(n):",o:["Network administrator","Database administrator","Technical support specialist","Hardware engineer","AI/ML engineer"],a:4},
+{s:"Scope of Computing",q:"The role of a DevOps engineer primarily involves:",o:["Writing assembly language for embedded systems","Designing printed circuit boards","Performing user acceptance testing manually","Drafting legal software licenses","Managing CI/CD pipelines and cloud infrastructure"],a:4},
+{s:"Scope of Computing",q:"A data scientist would most likely use which tool to visualize complex datasets?",o:["Wireshark","AutoCAD","Photoshop","Eclipse","Tableau or Power BI"],a:4},
+{s:"Scope of Computing",q:"Which computing role focuses on protecting an organization's networks, systems, and data from cyber threats?",o:["Full-stack developer","Game developer","Front-end designer","Hardware technician","Cybersecurity analyst"],a:4},
+{s:"Scope of Computing",q:"According to 2026 industry reports, what percentage of business leaders cited AI and machine learning as a top hiring priority?",o:["15%","25%","35%","55%","45%"],a:4},
+{s:"Scope of Computing",q:"A cloud architect must be proficient in which of the following technologies?",o:["COBOL and FORTRAN","VHDL and Verilog","Adobe XD","SolidWorks","AWS, Azure, or GCP"],a:4},
+{s:"Scope of Computing",q:"Which statement best describes the IT job market heading into 2026?",o:["Demand for all IT skills is uniformly high and growing.","There is a declining need for all technology professionals.","The market is saturated with no opportunities for new graduates.","Only cybersecurity roles are experiencing growth.","Demand for specialist skills (AI, cloud, cybersecurity) is high, while generic IT skills are flat."],a:4},
+{s:"Scope of Computing",q:"A compliance analyst in computing is primarily responsible for:",o:["Writing efficient sorting algorithms","Designing user interfaces","Building mobile applications","Managing server cooling systems","Ensuring adherence to data privacy laws like GDPR and CCPA"],a:4},
+{s:"Scope of Computing",q:"Which emerging technology role involves creating smart contracts and decentralized applications?",o:["SOC analyst","UX researcher","QA automation engineer","Network architect","Blockchain developer"],a:4},
+{s:"Scope of Computing",q:"Full-stack developers are expected to know both:",o:["Cybersecurity and hardware design","Database administration and graphic design","Network cabling and user research","Cloud pricing and legal compliance","Frontend frameworks and backend languages"],a:4},
+{s:"Scope of Computing",q:"The highest full-time employment rate among recent computing graduates is found in which specialization?",o:["Game development","Technical support","Legacy system migration","Mainframe programming","Artificial Intelligence"],a:4},
+{s:"Scope of Computing",q:"An IT governance manager's primary duty is to:",o:["Code new features for the company's product","Repair broken computer hardware","Train employees in Microsoft Office","Monitor social media for brand mentions","Align IT strategy with business goals and manage risk"],a:4},
+{s:"Scope of Computing",q:"Which skill is most critical for a data engineer?",o:["Adobe Photoshop","PCB layout design","Copywriting","Network cable crimping","ETL pipeline construction and data warehousing"],a:4},
+{s:"Scope of Computing",q:"A professional working with Kubernetes and Docker is most likely employed as a:",o:["Legal advisor","Graphic designer","Hardware tester","Technical recruiter","Platform engineer or DevOps engineer"],a:4},
+{s:"Scope of Computing",q:"Which domain requires knowledge of penetration testing and SOC tools?",o:["Web design","Game physics programming","Audio engineering","Supply chain management","Cybersecurity"],a:4},
+{s:"Scope of Computing",q:"According to a 2026 analysis, what percentage of U.S. tech job postings required AI or machine learning skills?",o:["23%","73%","83%","93%","53%"],a:4},
+{s:"Scope of Computing",q:"A privacy officer's role involves:",o:["Writing Python scripts","Designing logos","Assembling computer hardware","Managing office supplies","Implementing data protection policies and responding to breaches"],a:4},
+{s:"Scope of Computing",q:"Which of the following is NOT a high-growth domain for computing graduates in 2026?",o:["Data Science and Analytics","Cloud Computing and DevOps","Cybersecurity","AI Governance","Punch-card programming"],a:4},
+{s:"Scope of Computing",q:"A mobile developer would most likely use:",o:["COBOL","Verilog","Cisco IOS","VBA for Excel","React Native or Swift"],a:4},
+{s:"Scope of Computing",q:"The concept of 'hyper-specialization' in computing means:",o:["A graduate should know every programming language equally well.","Generalists are no longer hired anywhere.","All computing jobs require a Ph.D.","Specialization only applies to hardware engineering.","Deep expertise in a narrow domain (e.g., LLM security) is increasingly valuable."],a:4},
+{s:"Scope of Computing",q:"Which role is responsible for ensuring that an AI system does not produce biased outcomes?",o:["Mainframe operator","Hardware validation engineer","Technical illustrator","IT procurement officer","AI Governance Specialist"],a:4},
+{s:"Scope of Computing",q:"A business intelligence analyst would primarily:",o:["Write firmware for microcontrollers","Design network topologies","Perform manual data entry","Repair printers","Create dashboards and reports to support decision-making"],a:4},
+{s:"Scope of Computing",q:"A graduate interested in ethical hacking should focus on:",o:["Adobe Creative Suite","Typing speed","Accounting principles","HR management","Python, Linux, and penetration testing frameworks"],a:4},
+{s:"Scope of Computing",q:"Which of the following is an example of an emerging tech role?",o:["Web developer (HTML/CSS only)","Tape librarian","CRT monitor repair technician","COBOL programmer (legacy only)","Blockchain developer"],a:4},
+{s:"Scope of Computing",q:"A cloud engineer must understand Infrastructure as Code (IaC). Which tool is commonly used for IaC?",o:["Photoshop","Excel","Word","Outlook","Terraform"],a:4},
+{s:"Scope of Computing",q:"The role of a QA automation engineer involves:",o:["Designing electrical circuits","Drafting patent applications","Managing office budgets","Conducting job interviews","Writing automated test scripts using tools like Selenium or Cypress"],a:4},
+{s:"Scope of Computing",q:"Which sector is NOT a major employer of computing professionals?",o:["Finance","Healthcare","Agriculture (precision farming IT)","Government","Handicraft (non-digital)"],a:4},
+{s:"Scope of Computing",q:"A data analyst would most likely use SQL for:",o:["Designing network protocols","Soldering circuit boards","Creating vector graphics","Writing legal contracts","Querying relational databases"],a:4},
+{s:"Scope of Computing",q:"What is one key reason for the high demand for cloud architects?",o:["Cloud computing has no competition.","Cloud architects are paid the least.","Cloud certification requires no training.","Cloud systems never fail.","Companies are moving workloads from on-premises to cloud providers."],a:4},
+
+// ===== SECTION 2: PROFESSIONAL TRAITS (Q31-90) =====
+{s:"Professional Traits",q:"A professional who always meets deadlines, double-checks their work, and takes responsibility for errors is demonstrating:",o:["Intellectual openness","Collaborative orientation","Self-promotion","Risk aversion","Conscientiousness"],a:4},
+{s:"Professional Traits",q:"When a software engineer proactively seeks feedback on their code and uses it to improve, they are displaying:",o:["Fixed mindset","Resistance to change","Complacency","Perfectionism (unhealthy)","Growth mindset"],a:4},
+{s:"Professional Traits",q:"Which behavior best exemplifies 'accountability' in a software team?",o:["Blaming the compiler for bugs","Hiding errors from the project manager","Deleting logs to avoid detection","Assigning fault to a junior developer","Admitting a mistake and proposing a fix"],a:4},
+{s:"Professional Traits",q:"A professional who listens carefully to a stakeholder's concerns and explains technical trade-offs in plain language is demonstrating:",o:["Technical arrogance","Isolationism","Over-engineering","Secrecy","Strong communication skills"],a:4},
+{s:"Professional Traits",q:"What is the most common reason industry managers cite for termination of otherwise skilled IT employees?",o:["Lack of programming language knowledge","Excessive productivity","Over-qualification","Knowing too many programming languages","Poor professional dispositions (e.g., inability to collaborate)"],a:4},
+{s:"Professional Traits",q:"A team member who offers to help a struggling colleague complete a difficult task is showing:",o:["Sabotage","Competitive selfishness","Indifference","Authoritarianism","Collaborative orientation"],a:4},
+{s:"Professional Traits",q:"'Intellectual openness' in a practical setting means:",o:["Refusing to adopt any new technology","Always assuming your initial design is perfect","Dismissing peer reviews","Keeping your knowledge to yourself","Being willing to consider a colleague's alternative solution even if it differs from your own"],a:4},
+{s:"Professional Traits",q:"A developer who regularly attends conferences, takes online courses, and reads technical blogs is practicing:",o:["Sabotage","Professional stagnation","Intellectual laziness","Risk avoidance","Lifelong learning"],a:4},
+{s:"Professional Traits",q:"When a manager assigns a task outside an employee's current skill set, a professional with a growth mindset would likely:",o:["Refuse the task immediately","Fake competence and hope for the best","Complain to HR","Quit the job","Accept the task and attempt to learn what is needed"],a:4},
+{s:"Professional Traits",q:"Transparency in project reporting means:",o:["Only sharing good news","Hiding budget overruns","Keeping all decisions secret","Sharing only with external auditors","Openly communicating progress, risks, and challenges to stakeholders"],a:4},
+{s:"Professional Traits",q:"Which disposition is most critical when a deadline must be moved due to unexpected technical debt?",o:["Dishonesty","Rigidity","Secrecy","Indifference","Adaptability"],a:4},
+{s:"Professional Traits",q:"A professional who respects the confidentiality of proprietary algorithms and customer data is adhering to:",o:["Ignorance","Public shaming","Competitive espionage","Carelessness","Honesty and trustworthiness"],a:4},
+{s:"Professional Traits",q:"When a software engineer disagrees with a design decision, the most professional action is to:",o:["Publicly insult the decision maker","Quietly sabotage the feature","Resign immediately","Hide the disagreement and do nothing","Provide a reasoned, respectful alternative and accept the final decision"],a:4},
+{s:"Professional Traits",q:"A professional who takes pride in their work and ensures proper documentation is valuing:",o:["Obscurity","Speed over quality","Individual glory","Job security through confusion","Excellence"],a:4},
+{s:"Professional Traits",q:"A conscientious developer will likely:",o:["Ignore coding standards","Skip documentation to save time","Commit code without testing","Blame others for integration failures","Write unit tests and perform code reviews"],a:4},
+{s:"Professional Traits",q:"Which trait helps a professional navigate rapid changes in frameworks and libraries?",o:["Rigidity","Aversion to feedback","Perfectionism (paralyzing)","Isolation","Intellectual openness"],a:4},
+{s:"Professional Traits",q:"A professional who attributes team success to the whole team and accepts personal responsibility for failures shows:",o:["Egoism","Blame shifting","Arrogance","Apathy","Integrity and humility"],a:4},
+{s:"Professional Traits",q:"When a junior developer asks for help, a senior developer who mentors them is demonstrating:",o:["Hoarding knowledge","Insecurity","Time wasting","Favoritism","Professional generosity and support for colleagues"],a:4},
+{s:"Professional Traits",q:"A professional who consistently arrives late to meetings and misses deadlines is lacking:",o:["Technical skill","Coding ability","Hardware knowledge","Certifications","Conscientiousness"],a:4},
+{s:"Professional Traits",q:"An engineer who modifies production code without proper testing or approval is violating which professional trait?",o:["Courage","Creativity","Speed","Independence","Accountability and due process"],a:4},
+{s:"Professional Traits",q:"The ability to give and receive constructive criticism without defensiveness is a sign of:",o:["Weakness","Indifference","Hostility","Arrogance","Emotional maturity and professionalism"],a:4},
+{s:"Professional Traits",q:"When a project's requirements change, a professional reacts by:",o:["Complaining and refusing to adapt","Ignoring the changes","Leaving the project","Forcing the old requirements","Assessing the impact and adjusting plans accordingly"],a:4},
+{s:"Professional Traits",q:"A professional who respects diversity and avoids microaggressions in team interactions is following:",o:["Competitive advantage","Survival of the fittest","Political maneuvering","Indifference","Fairness and respect"],a:4},
+{s:"Professional Traits",q:"Which action best demonstrates 'ownership' of a task?",o:["Waiting for someone else to do it","Blaming dependencies for delays","Working only when watched","Doing the minimum required","Proactively identifying risks and communicating status"],a:4},
+{s:"Professional Traits",q:"A software engineer who exaggerates their experience on a resume violates:",o:["Creativity","Collaboration","Adaptability","Efficiency","Honesty and trustworthiness"],a:4},
+{s:"Professional Traits",q:"In a retrospective meeting, a professional should:",o:["Only point out others' mistakes","Remain silent to avoid conflict","Attack management decisions","Focus only on positive aspects","Offer self-criticism and suggest improvements for the team"],a:4},
+{s:"Professional Traits",q:"An employee who uses company resources for personal cryptocurrency mining is lacking:",o:["Technical skill","Programming ability","Communication skills","Creativity","Integrity and respect for employer property"],a:4},
+{s:"Professional Traits",q:"Which trait is most important when a critical system fails at 2 AM?",o:["Panic","Blame assignment","Ignoring the issue","Hiding the failure","Self-regulation and calm problem-solving"],a:4},
+{s:"Professional Traits",q:"A professional who continues to learn new programming paradigms even after 20 years of experience exemplifies:",o:["Career stagnation","Resistance to change","Over-specialization","Complacency","Lifelong learning"],a:4},
+{s:"Professional Traits",q:"When a colleague takes credit for your work, the most professional first step is to:",o:["Publicly shame them","Delete their code","Quit immediately","Sabotage their future tasks","Privately discuss the issue with them or a manager, providing evidence"],a:4},
+{s:"Professional Traits",q:"A professional who keeps their work area organized and documentation up-to-date is showing:",o:["Obsessive-compulsive disorder (clinical)","Slowness","Lack of creativity","Authoritarianism","Conscientiousness and respect for others"],a:4},
+{s:"Professional Traits",q:"The practice of 'blameless post-mortems' in software engineering promotes:",o:["Finger-pointing","Cover-ups","Ignoring root causes","Increased secrecy","Learning and accountability without fear"],a:4},
+{s:"Professional Traits",q:"A professional who volunteers to mentor new hires is demonstrating:",o:["Intimidation","Wasting time","Building a personal fiefdom","Avoiding real work","Leadership and collegiality"],a:4},
+{s:"Professional Traits",q:"Which behavior undermines collaborative orientation?",o:["Sharing information freely","Helping teammates debug","Pair programming","Conducting code reviews","Hoarding knowledge to appear indispensable"],a:4},
+{s:"Professional Traits",q:"A developer who says 'I don't know, but I'll find out' instead of guessing is displaying:",o:["Weakness","Incompetence","Laziness","Over-confidence","Honesty and intellectual humility"],a:4},
+{s:"Professional Traits",q:"A professional who follows the company's security policies even when inconvenient is:",o:["Annoying","Obstructing productivity","Being paranoid","Wasting time","Demonstrating integrity and rule compliance"],a:4},
+{s:"Professional Traits",q:"When receiving negative performance feedback, a growth-oriented professional will:",o:["Argue and make excuses","Ignore the feedback","Resign","Blame the manager","Listen, ask clarifying questions, and create an improvement plan"],a:4},
+{s:"Professional Traits",q:"Which trait allows a professional to maintain composure when a deployment fails due to someone else's error?",o:["Anger","Blame shifting","Denial","Passive aggression","Emotional self-regulation"],a:4},
+{s:"Professional Traits",q:"A professional who respects intellectual property will:",o:["Copy proprietary code from a previous employer into the new project","Pirate software tools","Share confidential design documents on social media","Ignore software licenses","Use open-source libraries in compliance with their licenses"],a:4},
+{s:"Professional Traits",q:"The ability to switch between different programming languages and paradigms as needed is part of:",o:["Rigidity","Specialization only","Resistance","Inflexibility","Adaptability and intellectual openness"],a:4},
+{s:"Professional Traits",q:"A professional who overpromises and underdelivers is violating:",o:["Efficiency","Speed","Collaboration","Creativity","Honesty and realistic commitment"],a:4},
+{s:"Professional Traits",q:"When a team faces an impossible deadline, a professional should:",o:["Work 24/7 without communication","Quietly cut quality corners","Blame the project manager","Quit","Communicate the risk to stakeholders and propose trade-offs"],a:4},
+{s:"Professional Traits",q:"Which action demonstrates respect for the work of others?",o:["Taking credit for a colleague's idea","Ignoring pull request comments","Rewriting someone's code without discussion","Deleting comments","Properly citing sources and acknowledging contributions"],a:4},
+{s:"Professional Traits",q:"A professional who stays current with security vulnerabilities and applies patches promptly is showing:",o:["Paranoia","Slowness","Excessive caution","Ignorance","Diligence and responsibility"],a:4},
+{s:"Professional Traits",q:"The most effective way to handle a disagreement about technical direction is:",o:["Escalate immediately to the CEO","Refuse to work on the chosen approach","Implement your own solution secretly","Resign in protest","Use data and reasoned arguments, then accept the team's consensus"],a:4},
+{s:"Professional Traits",q:"A professional who maintains work-life balance and avoids burnout is demonstrating:",o:["Laziness","Lack of dedication","Poor time management","Indifference","Self-care and long-term sustainability"],a:4},
+{s:"Professional Traits",q:"Which trait is essential for a technical lead managing diverse personalities?",o:["Apathy","Authoritarianism","Favoritism","Indifference","Empathy"],a:4},
+{s:"Professional Traits",q:"A junior developer who asks many questions is often viewed as:",o:["Annoying and incompetent","Lazy","A waste of time","Argumentative","Engaged and willing to learn (professional)"],a:4},
+{s:"Professional Traits",q:"When a project fails, a professional focuses on:",o:["Who to blame","Covering up the failure","Resigning","Forgetting it ever happened","What to learn and how to prevent recurrence"],a:4},
+{s:"Professional Traits",q:"A professional who volunteers to write documentation for a new API is demonstrating:",o:["Avoidance of real coding","Bureaucracy","Time wasting","Over-engineering","Team-first attitude and communication support"],a:4},
+{s:"Professional Traits",q:"An employee who reports a coworker's unethical behavior through proper channels is:",o:["A snitch","Disloyal","Overreacting","Causing trouble","Upholding professional ethics and integrity"],a:4},
+{s:"Professional Traits",q:"A professional who respects deadlines but also refuses to compromise safety or quality is practicing:",o:["Impossible standards","Laziness","Recklessness","Indifference","Responsible trade-off management"],a:4},
+{s:"Professional Traits",q:"Which behavior indicates a lack of professionalism?",o:["Providing honest estimates","Helping a new team member","Attending code reviews","Documenting your code","Gossiping about colleagues"],a:4},
+{s:"Professional Traits",q:"A professional's reaction to a security breach they caused should include:",o:["Hiding the evidence","Deleting logs","Blaming a third-party library","Ignoring it","Immediately notifying the security team and helping to mitigate"],a:4},
+{s:"Professional Traits",q:"A software engineer who refuses to work on a project that would harm the environment is prioritizing:",o:["Personal comfort","Laziness","Disobedience","Fear","Ethical values over employment"],a:4},
+{s:"Professional Traits",q:"When a manager asks you to do something you believe is unethical, the professional first step is to:",o:["Do it without question","Resign immediately","Post about it on social media","Sabotage the task","Raise your concern respectfully with the manager"],a:4},
+{s:"Professional Traits",q:"Which trait helps a professional cope with legacy code that is poorly documented?",o:["Frustration and anger","Rewriting everything from scratch without approval","Ignoring the legacy system","Complaining constantly","Patience and systematic improvement"],a:4},
+{s:"Professional Traits",q:"A professional who regularly refactors code to reduce technical debt is showing:",o:["Gold plating","Wasting time","Lack of feature delivery","Perfectionism (harmful)","Responsibility and care for product quality"],a:4},
+{s:"Professional Traits",q:"Which of the following is a sign of a toxic professional behavior?",o:["Sharing knowledge","Pair programming","Conducting fair code reviews","Admitting mistakes","Withholding information to gain advantage"],a:4},
+{s:"Professional Traits",q:"The ultimate goal of professional traits in an organization is to:",o:["Maximize individual fame","Minimize work","Avoid all responsibility","Eliminate teamwork","Build trust, reliability, and high-quality outcomes"],a:4},
+
+// ===== SECTION 3: IEEE-ACM CODE OF ETHICS (Q91-160) =====
+{s:"ACM Code of Ethics",q:"According to the ACM Code of Ethics, which general principle is considered the first and foremost?",o:["Avoid harm.","Be honest and trustworthy.","Respect privacy.","Honor confidentiality.","Contribute to society and human well-being."],a:4},
+{s:"ACM Code of Ethics",q:"The ACM Code states that computing professionals should consider whether the results of their efforts will be used in socially responsible ways and:",o:["Be kept secret from the public.","Be sold only to the highest bidder.","Be patented without exception.","Be restricted to government use.","Be broadly accessible."],a:4},
+{s:"ACM Code of Ethics",q:"Which of the following is NOT listed as an example of 'harm' in the ACM Code?",o:["Unjustified physical or mental injury.","Unjustified destruction or disclosure of information.","Unjustified damage to property.","Unjustified damage to reputation.","A competitor releasing a superior product."],a:4},
+{s:"ACM Code of Ethics",q:"According to the ACM Code, when an unintended harm occurs from a well-intended action, those responsible are obliged to:",o:["Deny any responsibility.","Ignore the harm as it was not intentional.","Blame the user for the harm.","Continue as planned, hoping the harm goes away.","Undo or mitigate the harm as much as possible."],a:4},
+{s:"ACM Code of Ethics",q:"The ACM Code emphasizes that computing professionals should promote environmental sustainability. This is a component of which principle?",o:["Avoid harm.","Respect the work required to produce new ideas.","Respect privacy.","Honor confidentiality.","Contribute to society and human well-being."],a:4},
+{s:"ACM Code of Ethics",q:"The ACM Code is designed to:",o:["Provide a legal framework for prosecution.","Serve as an algorithm for solving all ethical problems.","Replace the need for individual moral judgment.","Guarantee that all computing projects will be ethical.","Inspire and guide the ethical conduct of all computing professionals."],a:4},
+{s:"ACM Code of Ethics",q:"Which ACM principle requires computing professionals to be fair and take action not to discriminate?",o:["1.2 Avoid harm","1.3 Be honest and trustworthy","1.5 Respect intellectual property","1.6 Respect privacy","1.4 Be fair and take action not to discriminate"],a:4},
+{s:"ACM Code of Ethics",q:"The ACM Code's principle of 'respecting the privacy of others' is found in which section?",o:["Section 1.2","Section 1.4","Section 2.1","Section 2.3","Section 1.6"],a:4},
+{s:"ACM Code of Ethics",q:"The most recent major update to the ACM Code of Ethics and Professional Conduct was completed in which year?",o:["1992","2001","2010","2022","2018"],a:4},
+{s:"ACM Code of Ethics",q:"According to the ACM Code, when the interests of multiple groups conflict, whose needs should be given increased attention and priority?",o:["The most profitable client.","The most powerful stakeholder.","The needs of the project manager.","The interests of the software development team.","The needs of those less advantaged."],a:4},
+{s:"ACM Code of Ethics",q:"Which of the following is NOT a general ethical principle outlined in Section 1 of the ACM Code?",o:["Contribute to society and human well-being.","Respect the work required to produce new ideas.","Give proper credit for intellectual property.","Honor confidentiality.","Maximize personal returns on stock options."],a:4},
+{s:"ACM Code of Ethics",q:"Principle 1.5 of the ACM Code, 'Respect the work required to produce new ideas, inventions, creative works, and computing artifacts,' is primarily about:",o:["Ensuring hardware is manufactured ethically.","Avoiding conflicts of interest.","Maintaining technical competence.","Promoting environmental sustainability.","Protecting intellectual property rights."],a:4},
+{s:"ACM Code of Ethics",q:"The ACM Code explicitly states that the Code is not an algorithm for solving ethical problems. This means:",o:["The Code provides a definitive, step-by-step answer for every situation.","The Code is useless and should not be consulted.","The Code is only applicable to a small subset of ethical issues.","The Code is legally binding and its rules must be followed to the letter.","The Code requires professionals to apply thoughtful consideration to each unique situation."],a:4},
+{s:"ACM Code of Ethics",q:"According to the ACM Code, a computing professional's obligation to 'avoid harm' includes:",o:["Harm to people only.","Harm to the environment only.","Harm that is intentional, but not unintentional harm.","Harm that is solely physical.","Harm to both people and the environment."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The joint IEEE-CS/ACM Software Engineering Code of Ethics and Professional Practice is structured around how many principles?",o:["5","10","12","15","8"],a:4},
+{s:"IEEE-ACM Joint Code",q:"According to the joint Code, which principle dictates that software engineers shall act in accordance with the public interest?",o:["Client and Employer","Product","Judgment","Self","Public"],a:4},
+{s:"IEEE-ACM Joint Code",q:"The principle of 'Product' in the joint IEEE-CS/ACM Code requires software engineers to:",o:["Maximize profits for their employer.","Keep product details a secret from the public.","Release software as quickly as possible, regardless of quality.","Focus only on features, not on security.","Ensure their products meet the highest professional standards."],a:4},
+{s:"IEEE-ACM Joint Code",q:"Under the joint Code, a software engineer's primary loyalty should be to:",o:["The employer's profits.","Their own career advancement.","The specific programming language they prefer.","The country they reside in.","The public good."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The 'Client and Employer' principle of the joint Code states that software engineers shall act in a manner that is in the best interests of their client and employer, consistent with:",o:["The lowest possible cost.","The fastest delivery schedule.","The most advanced technology.","Their personal moral code only.","The public interest."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The principle of 'Judgment' in the joint Code requires software engineers to:",o:["Ignore the input of non-technical stakeholders.","Always defer to their manager's judgment.","Make decisions based solely on intuition.","Base all judgments on what is popular, not what is right.","Maintain integrity and independence in their professional judgment."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The principle of 'Self' in the joint Code states that software engineers shall participate in:",o:["Maximum profit generation.","Keeping their skills a secret from colleagues.","Working exclusively in a single domain.","Avoiding all forms of professional collaboration.","Lifelong learning regarding the practice of their profession."],a:4},
+{s:"IEEE-ACM Joint Code",q:"A software engineer discovers that their company's flagship product has a security vulnerability that could expose customer data. According to the 'Public' principle, the engineer should:",o:["Remain silent to avoid angering management.","Quit their job immediately.","Sell the information about the vulnerability to a competitor.","Blame the problem on a different team.","Attempt to fix it and, if ignored, take appropriate steps to inform affected parties."],a:4},
+{s:"IEEE-ACM Joint Code",q:"Which principle of the joint Code requires software engineers to ensure that their products and related modifications meet the highest professional standards possible?",o:["Public","Client and Employer","Judgment","Management","Product"],a:4},
+{s:"IEEE-ACM Joint Code",q:"The joint Code expects software engineers to promote an ethical approach to the practice of the profession. This is explicitly part of which principle?",o:["Public","Client and Employer","Product","Management","Self"],a:4},
+{s:"IEEE-ACM Joint Code",q:"According to the joint Code, software engineers shall not use their technical skills to misuse other people's computers. This is a subset of which broad principle?",o:["Public","Client and Employer","Product","Profession","Integrity"],a:4},
+{s:"IEEE-ACM Joint Code",q:"The principle of 'Integrity' in the joint Code requires software engineers to:",o:["Compromise their integrity for the sake of the project.","Keep all project information secret, even from their team.","Prioritize company secrets over public safety.","Ignore any ethical concerns raised by others.","Maintain integrity and independence in their professional judgment."],a:4},
+{s:"IEEE-ACM Joint Code",q:"A software engineer is asked to approve a project that they know has not been properly tested and could be unsafe. Which principle of the joint Code is most directly violated if they approve it?",o:["Management","Client and Employer","Self","Profession","Product"],a:4},
+{s:"IEEE-ACM Joint Code",q:"The joint Code states that software engineers shall be fair to and supportive of their colleagues. This is a component of which principle?",o:["Public","Product","Client and Employer","Self","Colleagues"],a:4},
+{s:"IEEE-ACM Joint Code",q:"According to the joint Code, if a software engineer's judgment is overruled in a matter that endangers life or property, they should:",o:["Do nothing, as they are not responsible.","Publicly protest the decision.","Accept the decision and move on.","Sabotage the project to prevent harm.","Notify their employer or client and, if necessary, take further steps."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The 'Management' principle of the joint Code requires software engineering managers to:",o:["Maximize productivity at any cost.","Take sole credit for the team's work.","Discourage team members from raising ethical concerns.","Prioritize project deadlines over team well-being.","Ensure that all team members have the necessary resources and training."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The principle of 'Profession' in the joint Code requires software engineers to:",o:["Keep the profession's knowledge and skills a secret.","Compete aggressively with other professionals.","Only work for companies that are ACM/IEEE members.","Refuse to teach or mentor junior engineers.","Advance the integrity and reputation of the profession."],a:4},
+{s:"IEEE-ACM Joint Code",q:"A software engineer is asked to work on a project that they believe is in violation of the public interest. According to the joint Code, their first step should be to:",o:["Immediately go to the press.","Refuse the assignment with no explanation.","Work on the project but keep a detailed log.","Quit their job without any discussion.","Discuss the matter with their employer or client."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The 'Product' principle emphasizes that software engineers should ensure that their products are:",o:["Difficult to understand to ensure job security.","Released as quickly as possible to beat competitors.","Developed in total secrecy.","Profitable above all other considerations.","Safe, meet specifications, and pass appropriate tests."],a:4},
+{s:"IEEE-ACM Joint Code",q:"According to the joint Code, a software engineer should 'respect the privacy of those who will be affected by their work.' This is an element of which principle?",o:["Client and Employer","Product","Integrity","Profession","Public"],a:4},
+{s:"IEEE-ACM Joint Code",q:"The joint Code's principle of 'Colleagues' includes the responsibility to:",o:["Compete with colleagues for promotions.","Keep secrets from colleagues to gain an advantage.","Report all colleague mistakes to management.","Discourage colleagues from new ideas.","Assist colleagues in their professional development."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The joint Code states that software engineers shall participate in lifelong learning. This is found under the '________' principle.",o:["Product","Client and Employer","Integrity","Management","Self"],a:4},
+{s:"IEEE-ACM Joint Code",q:"According to the joint Code, a software engineer's foremost commitment is to:",o:["Their employer.","Their client.","Their profession.","Their colleagues.","The public good."],a:4},
+{s:"IEEE-ACM Joint Code",q:"A software engineer is about to leave a job for a competitor. According to the joint Code, their ethical duty to their current employer includes:",o:["Taking all source code with them.","Deleting all project documentation on their last day.","Actively recruiting their former colleagues to join their new company.","Publicly criticizing their former employer's products.","Maintaining confidentiality of their former employer's proprietary information."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The principle of 'Integrity' in the joint Code is closely related to the IEEE Code's prohibition of:",o:["Conflicts of interest.","Bribery.","Injuring others by false or malicious action.","None of the above.","All of the above."],a:4},
+{s:"IEEE-ACM Joint Code",q:"According to the joint Code, when a software engineer has reason to believe that software is likely to be used for an unlawful purpose, they should:",o:["Continue working on it as instructed.","Make sure it is as bug-free as possible.","Add a warning message to the software.","Leak the information to a news outlet.","Refuse to participate in its development."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The joint Code's 'Profession' principle encourages software engineers to:",o:["Take on work in areas where they are not competent to gain experience.","Keep their technical knowledge a secret to maintain job security.","Prioritize their personal career advancement above all else.","Avoid reviewing the work of their peers.","Support other software engineers in following this code of ethics."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The joint Code of Ethics is intended to be:",o:["A legally binding document with criminal penalties.","A document only for academic study, not professional practice.","A set of suggestions that can be ignored when inconvenient.","A tool for employers to punish employees.","A set of guidelines that software engineers can use to make ethical decisions."],a:4},
+{s:"IEEE-ACM Joint Code",q:"According to the joint Code, a software engineer should 'not knowingly use software that is obtained or retained either illegally or unethically.' This is an example of maintaining:",o:["Competence","Judgment","Self-interest","Professional reputation","Integrity"],a:4},
+{s:"IEEE-ACM Joint Code",q:"A software engineer believes a project manager is making a technically unsound decision. According to the 'Judgment' principle, the engineer should:",o:["Obey the manager without question.","Report the manager to human resources.","Go behind the manager's back to a higher authority.","Publicly criticize the manager on social media.","Politely provide their professional opinion and the reasons for it."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The joint Code states that software engineers shall 'approve software only if they have a well-founded belief that it is safe, meets specifications, passes appropriate tests...' This is a requirement of which principle?",o:["Integrity","Client and Employer","Public","Management","Product"],a:4},
+{s:"IEEE-ACM Joint Code",q:"According to the joint Code, when a software engineer determines that a project cannot be completed ethically, they should:",o:["Do the unethical work but donate their fee to charity.","Quietly resign from the project.","Complete the work but leak the information to the press.","Ignore their concerns and complete the work.","Report the issue to their employer or client and, if no resolution is found, consider further action."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The joint Code's 'Management' principle states that managers should ensure that policies and procedures are:",o:["Secret and known only to management.","Changed daily to keep employees on their toes.","Designed to maximize the manager's personal bonus.","Written in the most complex legal language possible.","Fairly and accurately reported to all stakeholders."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The joint Code's 'Colleagues' principle includes a duty to:",o:["Take credit for a colleague's work if the colleague is absent.","Undermine colleagues who are competing for a promotion.","Keep all feedback to oneself to avoid hurting feelings.","Only provide positive feedback to colleagues.","Review the work of colleagues in an objective, candid, and properly documented way."],a:4},
+{s:"IEEE-ACM Joint Code",q:"A software engineer is offered a large sum of money to reveal a security flaw in their employer's product to a competitor. Accepting this bribe would violate which principles of the joint Code?",o:["Integrity and Client/Employer only","Public and Self only","Management and Colleagues only","Product and Profession only","All of the above."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The joint Code explicitly states that software engineers shall 'be fair to and supportive of their colleagues.' This includes:",o:["Discouraging colleagues from exploring new technologies.","Taking credit for a colleague's work when possible.","Competing with colleagues for the same recognition.","Ignoring a colleague's request for help.","Assisting colleagues in being informed of their current work."],a:4},
+{s:"IEEE-ACM Joint Code",q:"According to the 'Public' principle of the joint Code, software engineers shall:",o:["Only serve the interests of their employer, even at the public's expense.","Act in the public interest only if it does not conflict with their job.","Disregard the public interest as it is too broad to define.","Follow the public's opinion on social media.","Act consistently with the public interest."],a:4},
+{s:"IEEE-ACM Joint Code",q:"The primary purpose of having both an ACM Code and an IEEE-CS/ACM joint Code is to:",o:["Confuse software engineers with multiple sets of rules.","Compete with each other for members.","Replace all legal systems in technology.","Ensure that all software is proprietary.","Provide a comprehensive ethical framework for all computing professionals, with the joint Code focusing specifically on software engineering."],a:4},
+{s:"ACM Code of Ethics",q:"Which ACM general principle states that professionals should 'respect the autonomy of individuals' and 'protect each individual's right to self-determination'?",o:["Avoid harm","Be honest and trustworthy","Respect privacy","Honor confidentiality","Contribute to society and human well-being"],a:4},
+{s:"ACM Code of Ethics",q:"According to the ACM Code, when harm is an intentional part of a system, those responsible are obligated to:",o:["Proceed with the design as planned.","Hide the harmful aspects from users.","Minimize documentation to avoid liability.","Outsource the system development to another team.","Ensure the harm is ethically justified."],a:4},
+{s:"ACM Code of Ethics",q:"A computing professional is asked to work on a project that will produce a product that could be used by an oppressive regime to monitor its citizens. Which ACM principle is most directly relevant?",o:["Respect intellectual property","Respect privacy","Honor confidentiality","Know and respect existing rules","Contribute to society and human well-being"],a:4},
+{s:"ACM Code of Ethics",q:"The ACM Code is intended to apply to:",o:["Only ACM members.","Only professional software developers.","Only managers and executives in tech companies.","Only individuals working in the United States.","All computing professionals, including students and aspiring practitioners."],a:4},
+{s:"ACM Code of Ethics",q:"According to the ACM Code, if a computing professional is faced with an ethical dilemma, they should understand that:",o:["The Code provides one clear answer that is always correct.","The only option is to consult a lawyer.","The dilemma is a sign that they are in the wrong profession.","They should ignore the dilemma and proceed with the project.","Multiple principles may apply, and they will have different relevance."],a:4},
+{s:"ACM Code of Ethics",q:"The ACM Code's principle of 'giving proper credit for intellectual property' (1.5) is most analogous to:",o:["Avoiding conflicts of interest.","Maintaining technical competence.","Avoiding bribery.","Assisting colleagues' development.","Avoiding plagiarism."],a:4},
+{s:"ACM Code of Ethics",q:"Which section of the ACM Code provides principles for individuals who have a leadership role in the workplace?",o:["Section 1","Section 2","Section 4","The Preamble","Section 3"],a:4},
+{s:"ACM Code of Ethics",q:"A software engineer copies an entire module of code from an open-source project into their company's proprietary product without any attribution. This is a clear violation of which ACM principle?",o:["Avoid harm","Be honest and trustworthy","Respect privacy","Honor confidentiality","Respect the work required to produce new ideas"],a:4},
+{s:"ACM Code of Ethics",q:"According to the ACM Code, a computing professional who is aware of a potential ethical violation by a colleague has a responsibility to:",o:["Ignore it to maintain a good working relationship.","Report it anonymously to avoid any personal risk.","Publicly shame the colleague on social media.","Quit their job to avoid being associated with it.","Address the matter through appropriate channels."],a:4},
+{s:"ACM Code of Ethics",q:"The ACM Code was last updated in 2018 to address:",o:["The ethical issues of mainframe computing.","A decline in membership numbers.","The specific needs of hardware engineers only.","The legalization of hacking for security research.","The growing pervasiveness of computing in all aspects of society."],a:4},
+{s:"ACM Code of Ethics",q:"The ACM Code's principle of 'avoiding harm' obligates a professional to undo or mitigate harm. This duty applies when the harm is:",o:["Intentional and malicious.","Caused by a user, not the system.","Caused by a third-party component.","Only when it results in legal liability.","Unintended."],a:4},
+{s:"ACM Code of Ethics",q:"The requirement that the public good is the 'primary consideration' in the ACM Code means that in cases of conflict, it should take precedence over:",o:["An employer's financial interests only.","A client's specific demands only.","A professional's career advancement only.","Only the law.","All of the above."],a:4},
+{s:"ACM Code of Ethics",q:"Principle 2.1 of the ACM Code states that computing professionals should 'strive to achieve high quality in both the processes and products of their work.' This is a commitment to:",o:["Honesty.","Fairness.","Avoiding harm.","Confidentiality.","Professional competence."],a:4},
+{s:"ACM Code of Ethics",q:"According to the ACM Code, a computing professional's duty to 'respect privacy' (1.6) includes an obligation to:",o:["Collect as much data as possible from users.","Sell user data to the highest bidder.","Share user data freely with government agencies.","Keep all data secret, even from the user.","Use collected data only for the purposes for which it was intended."],a:4},
+{s:"ACM Code of Ethics",q:"The ACM Code's principle of 'honoring confidentiality' (1.7) is a key part of the ethical duty owed to:",o:["The general public.","The environment.","Future generations of engineers.","Open-source communities.","Employers and clients."],a:4},
+
+// ===== SECTION 4: IEEE CODE (Q161-220) =====
+{s:"IEEE Code of Ethics",q:"According to the IEEE Code of Ethics, members commit to making decisions consistent with the safety, health, and welfare of the:",o:["Employer.","Client.","Fellow engineers.","The IEEE organization itself.","Public."],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code of Ethics currently consists of how many principles?",o:["5","8","12","15","10"],a:4},
+{s:"IEEE Code of Ethics",q:"Under the IEEE Code, members are obligated to 'disclose promptly factors that might endanger the ______ or the environment.'",o:["Employer","Project budget","Company's reputation","Source code","Public"],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code of Ethics states that members should avoid real or perceived ______ of interest whenever possible.",o:["Benefits","Mergers","Opportunities","Resolutions","Conflicts"],a:4},
+{s:"IEEE Code of Ethics",q:"When making claims or estimates, the IEEE Code requires members to be:",o:["Optimistic and ambitious.","Conservative and cautious.","Vague and general.","Ambitious and visionary.","Honest and realistic."],a:4},
+{s:"IEEE Code of Ethics",q:"Which of the following is explicitly forbidden by the IEEE Code of Ethics in all its forms?",o:["Overtime work.","Remote work.","Open-source software.","Competitive bidding.","Bribery."],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code encourages members to do what with the understanding of technology and its potential consequences?",o:["Limit it to a small group of experts.","Keep it confidential for competitive advantage.","Patent it for personal profit.","Simplify it to the point of being misleading.","Improve it."],a:4},
+{s:"IEEE Code of Ethics",q:"According to the IEEE Code, members should undertake technological tasks for others only if:",o:["They can outsource the work to a cheaper provider.","It will generate the highest profit margin.","The project deadline is very short.","They have a personal connection with the client.","They are qualified by training or experience."],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code expects members to seek, accept, and offer honest criticism of technical work and to:",o:["Defend their work at all costs.","Hide any errors they find.","Blame others for any mistakes.","Refuse to review the work of peers.","Acknowledge and correct errors."],a:4},
+{s:"IEEE Code of Ethics",q:"Treating all persons fairly regardless of race, religion, gender, disability, age, or national origin is mandated by which principle of the IEEE Code?",o:["Principle 1","Principle 3","Principle 6","Principle 10","Principle 8"],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code's 9th principle directly addresses the prohibition of:",o:["Working on projects outside of one's specialty.","Accepting gifts from clients.","Disclosing company secrets.","Taking vacation time.","Injuring others by false or malicious action."],a:4},
+{s:"IEEE Code of Ethics",q:"Assisting colleagues and co-workers in their professional development is the focus of which IEEE Code principle?",o:["Principle 2","Principle 4","Principle 7","Principle 9","Principle 10"],a:4},
+{s:"IEEE Code of Ethics",q:"The current version of the IEEE Code of Ethics was approved by the IEEE Board of Directors in:",o:["1912","1950","1974","2010","1990"],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code states that members should maintain and improve their technical:",o:["Fortune","Network","Standing","Reputation","Competence"],a:4},
+{s:"IEEE Code of Ethics",q:"Under the IEEE Code, if a conflict of interest does exist, a member must:",o:["Ignore it and proceed as planned.","Resign from their position immediately.","Transfer the project to a family member.","Keep it a secret to avoid embarrassment.","Disclose it to affected parties."],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code emphasizes that its members should 'hold paramount' the safety, health, and welfare of the public. The word 'paramount' in this context means:",o:["As a secondary consideration.","As a last resort.","Only when it is convenient.","Only when it does not conflict with company profits.","As the highest or most important consideration."],a:4},
+{s:"IEEE Code of Ethics",q:"Which IEEE principle is most directly related to the responsible use and disclosure of data when making engineering claims?",o:["Principle 1 (Public welfare)","Principle 5 (Improve understanding of technology)","Principle 7 (Seek, accept, and offer honest criticism)","Principle 9 (Avoid injuring others)","Principle 3 (Honest and realistic claims)"],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code expects members to properly credit the contributions of others. This is most closely related to which principle?",o:["Principle 2 (Avoid conflicts of interest)","Principle 4 (Reject bribery)","Principle 6 (Maintain technical competence)","Principle 8 (Treat all persons fairly)","Principle 7 (Acknowledge and correct errors, credit others)"],a:4},
+{s:"IEEE Code of Ethics",q:"According to the IEEE Code, a member who is not qualified by training or experience for a project should:",o:["Take the project anyway and learn on the job.","Hire an unqualified friend to do the work.","Submit a bid that is far below market value.","Copy code from an open-source project without attribution.","Decline the project or make a full disclosure of their limitations."],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code's principle on 'avoiding injuring others' covers harm to:",o:["Property only.","Reputation only.","Employment only.","Only physical persons, not their property.","Persons, property, reputation, and employment."],a:4},
+{s:"IEEE Code of Ethics",q:"The foundational principle for all other principles in the IEEE Code of Ethics is most likely to be:",o:["Maintaining technical competence.","Avoiding conflicts of interest.","Assisting colleagues in their professional development.","Rejecting bribery.","Upholding the safety, health, and welfare of the public."],a:4},
+{s:"IEEE Code of Ethics",q:"According to the IEEE Code, members should avoid injuring others. What does the code say about injury caused by 'false or malicious action'?",o:["It is acceptable if it benefits the company.","It is only a violation if it causes physical harm.","It is a minor infraction, not a serious one.","It is only a concern for managers, not individual members.","It is explicitly prohibited."],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code of Ethics applies to:",o:["Only IEEE members who are also licensed engineers.","Only the IEEE Board of Directors.","Only IEEE members working in the United States.","Only IEEE members who work for large corporations.","All members of IEEE in any grade."],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code's principle of 'treating fairly all persons' explicitly includes non-discrimination based on which of the following factors?",o:["Age and national origin only.","Gender and disability only.","Race and religion only.","Sexual orientation and gender identity only.","All of the above."],a:4},
+{s:"IEEE Code of Ethics",q:"When a member of IEEE is placed in jeopardy as a consequence of adhering to the IEEE Code of Ethics, the IEEE may offer:",o:["Financial compensation for lost wages.","Legal representation to sue their employer.","A public condemnation of the employer.","No assistance, as it is a personal matter.","Assistance, if warranted by the Board of Directors."],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code commits members to 'improve the understanding of technology, its ______ application, and potential consequences.'",o:["Profitable","Rapid","Secret","Experimental","Appropriate"],a:4},
+{s:"IEEE Code of Ethics",q:"Which IEEE principle directly encourages a culture of peer review and constructive feedback?",o:["Principle 5: To improve the understanding of technology.","Principle 6: To maintain and improve our technical competence.","Principle 8: To treat fairly all persons.","Principle 10: To assist colleagues and co-workers.","Principle 7: To seek, accept, and offer honest criticism of technical work."],a:4},
+{s:"IEEE Code of Ethics",q:"According to the IEEE Code, what is a member's duty if they make an error in their technical work?",o:["Conceal it to avoid embarrassment for themselves or their company.","Blame a team member or external vendor.","Quit their job before anyone finds out.","Delete all records of the error.","Acknowledge and correct the error."],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code's requirement to 'reject bribery' is an example of a principle promoting:",o:["Technical competence.","Professional development.","Public safety.","Environmental protection.","Integrity and impartiality."],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code was most recently revised in 1990. What was the year of the first IEEE (then AIEE) Code of Ethics?",o:["1884","1900","1950","1974","1912"],a:4},
+{s:"IEEE Code of Ethics",q:"Which IEEE principle is primarily concerned with ensuring that a professional does not take credit for the work of others?",o:["Principle 1: Public welfare.","Principle 4: Reject bribery.","Principle 9: Avoid injuring others.","Principle 10: Assist colleagues.","Principle 7: Credit properly the contributions of others."],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code of Ethics expects members to support others in following the code. This is explicitly mentioned in which principle?",o:["Principle 2 (Disclose conflicts of interest)","Principle 5 (Improve understanding)","Principle 8 (Treat fairly)","Principle 9 (Avoid injuring others)","Principle 10 (Assist colleagues and co-workers)"],a:4},
+{s:"IEEE Code of Ethics",q:"In the context of the IEEE Code, what does 'real or perceived conflicts of interest' mean?",o:["Only actual conflicts are a concern; appearances are irrelevant.","Conflicts of interest are always acceptable if they are disclosed after the fact.","Only financial conflicts of interest matter.","Conflicts are only a concern for senior management.","Even the appearance of a conflict can be damaging and should be avoided."],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code's commitment to 'the highest ethical and professional conduct' is a pledge made in recognition of the importance of IEEE's technologies in affecting:",o:["The profitability of its member companies.","The global standing of the United States.","The membership numbers of the IEEE.","The development of newer, faster computers.","The quality of life throughout the world."],a:4},
+{s:"IEEE Code of Ethics",q:"A software engineer is offered a job by a vendor that their company is currently evaluating. The engineer is in a position to influence the contract decision. According to the IEEE Code, this situation represents:",o:["An acceptable business practice.","A clear-cut case of bribery.","A normal career advancement opportunity.","A situation that does not involve any ethical considerations.","A potential conflict of interest that must be disclosed."],a:4},
+{s:"IEEE Code of Ethics",q:"Which IEEE principle is most directly applicable when an engineer discovers their company is about to release a product that does not meet environmental safety standards?",o:["Principle 6 (Maintain technical competence)","Principle 8 (Treat all persons fairly)","Principle 4 (Reject bribery)","Principle 2 (Avoid conflicts of interest)","Principle 1 (Public safety, health, and welfare)"],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code's principle of 'assisting colleagues and co-workers in their professional development' is a call for:",o:["Competition and individual achievement.","Outsourcing professional development to external firms.","Requiring all colleagues to attend the same training.","Prioritizing senior engineers over junior ones.","Mentorship and knowledge sharing."],a:4},
+{s:"IEEE Code of Ethics",q:"An IEEE member is asked to review a technical paper containing an idea similar to one they are developing. According to the IEEE Code, their duty is to:",o:["Reject the paper and submit their own idea first.","Criticize the paper unfairly to suppress the idea.","Steal the idea and claim it as their own.","Refuse to review the paper on principle.","Be honest and fair in their criticism and credit the author if they use the idea."],a:4},
+{s:"IEEE Code of Ethics",q:"Which of the following actions would be a direct violation of the IEEE Code of Ethics?",o:["Taking a new job with a competitor.","Publicly disclosing a potential environmental risk from a project.","Asking for a salary increase based on market rates.","Using open-source software in a commercial product.","Falsifying data on a project report to make it look more successful."],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code of Ethics is best described as:",o:["A set of unenforceable suggestions.","A legal document with the force of law.","A contract that only applies to IEEE staff.","An optional guideline for career success.","A personal commitment to the highest ethical and professional conduct."],a:4},
+{s:"IEEE Code of Ethics",q:"Which IEEE principle obligates members to 'avoid injuring others, their property, reputation, or employment by false or malicious action'?",o:["Principle 7","Principle 8","Principle 10","Principle 5","Principle 9"],a:4},
+{s:"IEEE Code of Ethics",q:"According to IEEE Principle 2, members should avoid conflicts of interest. Whenever possible, they should:",o:["Disclose them only after the project is complete.","Ignore them if they are minor.","Use them to gain a competitive advantage.","Report them to law enforcement.","Avoid them entirely or disclose them to affected parties."],a:4},
+{s:"IEEE Code of Ethics",q:"IEEE Principle 3 requires members to be 'honest and realistic in stating claims or estimates.' This applies to:",o:["Only financial claims.","Only technical performance claims.","Only claims made to the media.","Only claims made in academic papers.","All claims, including estimates of project cost and schedule."],a:4},
+{s:"IEEE Code of Ethics",q:"Under IEEE Principle 4, rejection of bribery is required. This includes:",o:["Only cash bribes.","Only bribes from foreign entities.","Only bribes that are illegal under local law.","Only bribes over $100.","Any form of undue influence, including gifts or favors."],a:4},
+{s:"IEEE Code of Ethics",q:"IEEE Principle 5 commits members to 'improve the understanding of technology, its appropriate application, and potential consequences.' Who is the primary audience for this improved understanding?",o:["Only IEEE members.","Only corporate shareholders.","Only government regulators.","Only the member's immediate supervisor.","The public and other stakeholders."],a:4},
+{s:"IEEE Code of Ethics",q:"IEEE Principle 6 requires members to 'maintain and improve our technical competence.' This can be achieved by:",o:["Only formal university courses.","Memorizing old technical manuals.","Avoiding new technologies to reduce risk.","Delegating all technical work to junior staff.","Continuous learning, training, and staying current with new technologies."],a:4},
+{s:"IEEE Code of Ethics",q:"IEEE Principle 7 encourages members to 'seek, accept, and offer honest criticism of technical work.' A practical application of this is:",o:["Never criticizing a colleague's work to avoid conflict.","Only accepting criticism from managers.","Rejecting all feedback as subjective.","Publishing criticism anonymously.","Conducting constructive peer code reviews."],a:4},
+{s:"IEEE Code of Ethics",q:"IEEE Principle 8 states that members should 'treat fairly all persons and not engage in acts of discrimination.' This includes:",o:["Discriminating based on experience level.","Favoring friends in hiring.","Ignoring diversity and inclusion policies.","Only treating fellow IEEE members fairly.","Ensuring equal opportunity regardless of protected characteristics."],a:4},
+{s:"IEEE Code of Ethics",q:"According to IEEE Principle 9, injuring others by 'false or malicious action' is prohibited. This covers:",o:["Making a mistake in a calculation.","Unintentionally causing a software bug.","Criticizing a colleague's work privately.","Competing for a promotion.","Spreading false rumors about a competitor's product."],a:4},
+{s:"IEEE Code of Ethics",q:"IEEE Principle 10 calls on members to 'assist colleagues and co-workers in their professional development.' This could include:",o:["Hoarding knowledge to be indispensable.","Discouraging attendance at conferences.","Taking credit for a colleague's idea.","Avoiding sharing resources.","Mentoring a junior engineer."],a:4},
+{s:"IEEE Code of Ethics",q:"Which IEEE principle is most directly violated if an engineer uses insider information to trade stock in a vendor company?",o:["Principle 1 (Public welfare)","Principle 4 (Reject bribery)","Principle 6 (Technical competence)","Principle 9 (Avoid injuring others)","Principle 2 (Conflicts of interest)"],a:4},
+{s:"IEEE Code of Ethics",q:"An engineer discovers a potential safety hazard in a bridge design software they are testing. According to IEEE Principle 1, they should:",o:["Ignore it because they are not the bridge designer.","Keep it secret to avoid liability.","Only report it to their manager and hope it gets fixed.","Exploit the hazard for personal gain.","Immediately disclose the hazard to the software's users and the public."],a:4},
+{s:"IEEE Code of Ethics",q:"Which IEEE principle requires engineers to 'credit properly the contributions of others'?",o:["Principle 3 (Honest claims)","Principle 8 (Treat fairly)","Principle 9 (Avoid injuring)","Principle 10 (Assist colleagues)","Principle 7 (Honest criticism and credit)"],a:4},
+{s:"IEEE Code of Ethics",q:"According to IEEE Principle 3, an engineer who underestimates the project timeline to win a contract, despite knowing it is unrealistic, is violating:",o:["Technical competence.","Avoiding conflicts of interest.","Assisting colleagues.","Treating fairly.","Honesty and realistic claims."],a:4},
+{s:"IEEE Code of Ethics",q:"IEEE Principle 4's rejection of bribery is essential because bribery:",o:["Is efficient and saves time.","Is legal in some countries.","Only affects small companies.","Is a normal business practice.","Undermines fair competition and integrity."],a:4},
+{s:"IEEE Code of Ethics",q:"Which IEEE principle encourages engineers to stay informed about the potential environmental consequences of their work?",o:["Principle 2 (Conflicts of interest)","Principle 6 (Technical competence)","Principle 8 (Treat fairly)","Principle 10 (Assist colleagues)","Principle 5 (Improve understanding of technology)"],a:4},
+{s:"IEEE Code of Ethics",q:"A manager asks an engineer to approve a design that the engineer knows is flawed. According to IEEE Principle 1, the engineer should:",o:["Approve it to keep their job.","Approve it but add a disclaimer.","Quit silently.","Approve it and hope no one gets hurt.","Refuse to approve and explain the risk to public safety."],a:4},
+{s:"IEEE Code of Ethics",q:"IEEE Principle 8 (treating all persons fairly) would be violated by:",o:["Offering a mentorship to a junior employee.","Providing flexible work hours for parents.","Conducting blind resume reviews.","Promoting based on merit.","Paying women less than men for the same role."],a:4},
+{s:"IEEE Code of Ethics",q:"Under IEEE Principle 9, making a false statement that damages a competitor's reputation is:",o:["Acceptable business competition.","Protected free speech.","Encouraged for market advantage.","Only a violation if the competitor is an IEEE member.","A violation of the Code."],a:4},
+{s:"IEEE Code of Ethics",q:"The IEEE Code's 10 principles are considered:",o:["Suggestions that may be ignored.","A binding contract for all members.","Legal statutes enforceable by law.","Outdated historical documents.","A framework for ethical conduct that members voluntarily commit to."],a:4},
+
+// ===== SECTION 5: ACCOUNTABILITY & AUDITING (Q221-260) =====
+{s:"Accountability & Auditing",q:"Accountability in software engineering means:",o:["Avoiding all responsibility for failures.","Blaming users for bugs.","Never making mistakes.","Delegating all tasks to others.","Being answerable for the outcomes of one's actions and decisions."],a:4},
+{s:"Accountability & Auditing",q:"An 'audit' in the context of IT systems typically refers to:",o:["A financial review only.","A code optimization process.","A hardware diagnostic test.","A user satisfaction survey.","A systematic examination of systems, controls, and processes to verify compliance and security."],a:4},
+{s:"Accountability & Auditing",q:"A security audit of a web application would most likely include:",o:["Testing the application's visual design.","Measuring battery consumption.","Assessing the comfort of the office chairs.","Evaluating the marketing copy.","Reviewing access logs and checking for unauthorized data access."],a:4},
+{s:"Accountability & Auditing",q:"The concept of 'traceability' in software auditing means:",o:["Being able to trace every line of code to its original author.","Tracing network packets.","Tracing hardware serial numbers.","Tracing employee attendance.","The ability to trace data and transactions from source to destination for verification."],a:4},
+{s:"Accountability & Auditing",q:"An organization is required to have an audit trail for financial transactions. This means:",o:["Deleting old transaction records.","Encrypting all data.","Outsourcing all accounting.","Using paper records only.","Maintaining a chronological log of all relevant events."],a:4},
+{s:"Accountability & Auditing",q:"Who is typically held accountable when an AI system causes harm due to biased training data?",o:["The AI system itself.","The end users.","The government.","No one; AI is autonomous.","The developers, data scientists, and organization that deployed it."],a:4},
+{s:"Accountability & Auditing",q:"An internal audit of a software development process might examine:",o:["The code's formatting style.","The coffee quality in the break room.","Employee salaries.","The company's logo.","Whether change management and code review policies are followed."],a:4},
+{s:"Accountability & Auditing",q:"The 'audit committee' of a corporation's board is responsible for:",o:["Writing the software.","Designing marketing campaigns.","Hiring software developers.","Managing customer support.","Overseeing financial and IT audits to ensure accountability."],a:4},
+{s:"Accountability & Auditing",q:"Which of the following is a key element of accountability for a software engineer?",o:["Denying any involvement in bugs.","Avoiding code reviews.","Blaming the testing team for missed requirements.","Deleting logs after a failure.","Documenting decisions and accepting responsibility for their work."],a:4},
+{s:"Accountability & Auditing",q:"A 'compliance audit' ensures that an organization adheres to:",o:["Only internal policies.","The personal preferences of the CEO.","Customer satisfaction scores.","Stock market predictions.","Laws, regulations, and standards (e.g., GDPR, HIPAA, PCI-DSS)."],a:4},
+{s:"Accountability & Auditing",q:"When a data breach occurs, accountability requires that:",o:["The breach is covered up to protect reputation.","The blame is placed on a single junior employee.","No one is informed.","The auditors are fired.","Responsible parties are identified and corrective actions taken."],a:4},
+{s:"Accountability & Auditing",q:"An 'algorithmic audit' is used to:",o:["Measure the speed of an algorithm.","Count lines of code.","Evaluate programmer productivity.","Test memory usage.","Check for bias, fairness, and unintended consequences of AI systems."],a:4},
+{s:"Accountability & Auditing",q:"What is the primary purpose of retaining audit logs?",o:["To consume disk space.","To slow down the system.","To confuse attackers.","To comply with a single arbitrary rule.","To provide evidence for accountability and forensic analysis."],a:4},
+{s:"Accountability & Auditing",q:"In the context of professional ethics, 'accountability' differs from 'responsibility' in that:",o:["Accountability is about blame, responsibility is about tasks.","They are exactly the same.","Responsibility is legal, accountability is moral.","Accountability only applies to managers.","Accountability implies an obligation to answer for outcomes, responsibility can be shared."],a:4},
+{s:"Accountability & Auditing",q:"An organization that implements 'blameless post-mortems' is trying to:",o:["Find someone to fire.","Hide mistakes.","Reduce documentation.","Increase employee anxiety.","Learn from errors without fear of punishment, improving system accountability."],a:4},
+{s:"Accountability & Auditing",q:"A SOC (Service Organization Control) audit is often required for:",o:["Open-source projects.","Single-developer apps.","Video games.","Personal blogs.","Cloud service providers to demonstrate controls over financial data."],a:4},
+{s:"Accountability & Auditing",q:"When conducting an ethical audit of a machine learning model, one should check for:",o:["Fancy visualizations.","The number of epochs trained.","The size of the model file.","The programming language used.","Disparate impact across protected groups."],a:4},
+{s:"Accountability & Auditing",q:"Accountability for a DevOps team includes:",o:["Never being on call.","Ignoring monitoring alerts.","Deleting logs after each deployment.","Avoiding documentation.","Being responsible for the reliability and security of deployments."],a:4},
+{s:"Accountability & Auditing",q:"A 'third-party audit' is conducted by:",o:["The organization's own internal staff.","A competitor.","The government in all cases.","The janitorial staff.","An independent external firm to ensure objectivity."],a:4},
+{s:"Accountability & Auditing",q:"According to the IEEE Code, if an engineer becomes aware of a design flaw that could cause harm, accountability demands:",o:["Silence to protect the employer.","Exploitation of the flaw.","Waiting for someone else to report it.","Ignoring the flaw.","Disclosure to appropriate parties."],a:4},
+{s:"Accountability & Auditing",q:"An audit of open-source software dependencies would look for:",o:["The age of the developers.","The number of stars on GitHub.","The geographical location of contributors.","The font used in documentation.","Known vulnerabilities in libraries."],a:4},
+{s:"Accountability & Auditing",q:"The Sarbanes-Oxley Act (SOX) requires publicly traded companies to:",o:["Release all source code.","Provide free software to all citizens.","Use only open-source software.","Pay all employees equally.","Maintain adequate internal controls and audit trails for financial data."],a:4},
+{s:"Accountability & Auditing",q:"Accountability for ethical AI means that:",o:["The AI is accountable, not the creators.","No one is responsible for AI errors.","The AI should be shut down.","Users are always at fault.","There should be a clear chain of human responsibility for AI decisions."],a:4},
+{s:"Accountability & Auditing",q:"A 'code audit' in software development typically examines:",o:["The office interior design.","The salary of developers.","The company's marketing strategy.","The inventory of office supplies.","The source code for bugs, security issues, and compliance with standards."],a:4},
+{s:"Accountability & Auditing",q:"An organization's failure to conduct regular security audits can be considered:",o:["Acceptable if they have no budget.","A creative business strategy.","Encouraged by privacy laws.","A way to save time.","A violation of professional accountability and possibly negligence."],a:4},
+{s:"Accountability & Auditing",q:"Which document is often used as a framework for IT audit and control?",o:["ISO 9001 (quality)","IEEE 802.11 (Wi-Fi)","HTML 5","Python PEP 8","COBIT (Control Objectives for Information and Related Technologies)"],a:4},
+{s:"Accountability & Auditing",q:"Accountability in a software team includes:",o:["No one knows who wrote which code.","Anonymous contributions only.","Rotating blame.","No documentation of decisions.","Clear ownership of modules and decisions via version control history."],a:4},
+{s:"Accountability & Auditing",q:"An audit finding that sensitive customer data is stored in plaintext would most likely be classified as:",o:["A minor recommendation.","An acceptable practice.","A feature.","A marketing advantage.","A high-risk vulnerability requiring immediate remediation."],a:4},
+{s:"Accountability & Auditing",q:"The role of an 'internal auditor' in IT is to:",o:["Write code for new features.","Manage the cafeteria.","Design user interfaces.","Sell products to customers.","Independently evaluate the effectiveness of risk management, control, and governance processes."],a:4},
+{s:"Accountability & Auditing",q:"Which of the following is a key principle of accountability?",o:["Deniability","Secrecy","Obfuscation","Finger-pointing","Transparency in actions and decisions"],a:4},
+{s:"Accountability & Auditing",q:"When a software bug causes financial loss, accountability requires the organization to:",o:["Hide the bug and hope no one notices.","Fire the developer who wrote the bug.","Discontinue the software immediately.","Blame the user.","Notify affected parties and compensate for damages if required by law or ethics."],a:4},
+{s:"Accountability & Auditing",q:"An 'audit log' should ideally be:",o:["Writable by any user.","Deleted weekly.","Stored on a public server.","Shared on social media.","Append-only and tamper-evident."],a:4},
+{s:"Accountability & Auditing",q:"According to the ACM Code, a professional who is accountable should:",o:["Avoid documenting their work.","Blame others for failures.","Only report successes.","Keep all decisions secret.","Accept responsibility for their own work and for the work of those they supervise."],a:4},
+{s:"Accountability & Auditing",q:"A 'regulatory audit' is triggered by:",o:["An employee's birthday.","A new coffee machine.","A change in office wallpaper.","A software update.","Legal requirements or government oversight."],a:4},
+{s:"Accountability & Auditing",q:"What is the consequence of lacking accountability in software projects?",o:["Higher quality.","Faster delivery.","Lower costs.","Happier users.","Increased risk of failures and unethical outcomes."],a:4},
+{s:"Accountability & Auditing",q:"A 'privacy audit' assesses whether an organization:",o:["Has the fastest network.","Uses the most popular programming language.","Has a good logo.","Offers free snacks.","Complies with data protection laws and respects user consent."],a:4},
+{s:"Accountability & Auditing",q:"Accountability for a data scientist includes:",o:["Ignoring data quality issues.","Deleting training data.","Hiding the model's limitations.","Only using black-box models.","Ensuring that models are explainable and free from bias."],a:4},
+{s:"Accountability & Auditing",q:"An 'audit committee' typically consists of:",o:["Software developers.","Customers.","Competitors.","Government officials.","Independent board members."],a:4},
+{s:"Accountability & Auditing",q:"If an auditor finds a violation of the IEEE Code of Ethics in a project, the professional involved should:",o:["Ignore the finding.","Blame the auditor.","Resign immediately.","Destroy the audit report.","Take corrective action and prevent recurrence."],a:4},
+{s:"Accountability & Auditing",q:"Accountability ultimately serves to:",o:["Punish individuals.","Increase bureaucracy.","Reduce innovation.","Slow down decision-making.","Build trust in technology and organizations."],a:4},
+
+// ===== SECTION 6: SOCIAL APPLICATIONS (Q261-300) =====
+{s:"Social Applications of Ethics",q:"The 'digital divide' refers to:",o:["A gap in processor speeds.","A division in programming languages.","A difference in screen resolutions.","A conflict between software developers.","The disparity between those who have access to digital technology and those who do not."],a:4},
+{s:"Social Applications of Ethics",q:"A computing professional designing an app for a developing region should consider:",o:["Only high-end smartphones.","The latest GPU features.","Augmented reality as a priority.","5G connectivity exclusively.","Low bandwidth, low-power devices, and offline functionality."],a:4},
+{s:"Social Applications of Ethics",q:"The principle of 'informed consent' in social computing means:",o:["Users should be forced to accept terms without reading.","Consent is not needed for data collection.","Only lawyers can give consent.","Consent is implied by using the service.","Users should be given clear, understandable information and then choose voluntarily."],a:4},
+{s:"Social Applications of Ethics",q:"Which of the following is a social application of ethics related to AI?",o:["Making AI as fast as possible.","Using AI to replace all human workers.","Keeping AI algorithms secret.","Maximizing AI's energy consumption.","Ensuring AI does not perpetuate or amplify societal biases."],a:4},
+{s:"Social Applications of Ethics",q:"The concept of 'algorithmic fairness' addresses:",o:["The speed of algorithms.","The beauty of code.","The number of lines of code.","The color scheme of the UI.","The prevention of discrimination in algorithmic decisions."],a:4},
+{s:"Social Applications of Ethics",q:"A social implication of widespread facial recognition technology is:",o:["Everyone's identity is always verified correctly.","No impact on society.","It only benefits law enforcement.","It is always 100% accurate.","Potential for mass surveillance and erosion of privacy."],a:4},
+{s:"Social Applications of Ethics",q:"'Environmental sustainability' in computing refers to:",o:["Using green color schemes in UI.","Planting trees around data centers.","Recycling only paper.","Using solar-powered keyboards.","Reducing energy consumption, e-waste, and carbon footprint of IT."],a:4},
+{s:"Social Applications of Ethics",q:"A social ethics issue raised by autonomous vehicles is:",o:["They are too slow.","They consume too much fuel.","They are too expensive.","They have no ethical issues.","How to program ethical decisions (e.g., the 'trolley problem') in crash scenarios."],a:4},
+{s:"Social Applications of Ethics",q:"Which ACM principle directly addresses the social responsibility to contribute to society and human well-being?",o:["1.2 Avoid harm","1.3 Be honest and trustworthy","1.6 Respect privacy","1.7 Honor confidentiality","1.1 Contribute to society and human well-being"],a:4},
+{s:"Social Applications of Ethics",q:"The ethical issue of 'technology addiction' (e.g., social media) relates to:",o:["The speed of processors.","The cost of hardware.","The color of the app icon.","The number of updates.","Design features that exploit psychological vulnerabilities."],a:4},
+{s:"Social Applications of Ethics",q:"A social application of ethics in data science is to:",o:["Collect as much data as possible.","Sell data to the highest bidder.","Ignore privacy concerns.","Only use data from one source.","Ensure that data is representative and not used to harm marginalized groups."],a:4},
+{s:"Social Applications of Ethics",q:"The term 'technological determinism' suggests:",o:["Society completely controls technology.","Technology has no social impact.","Ethics are irrelevant.","All technology is neutral.","Technology drives social change independently."],a:4},
+{s:"Social Applications of Ethics",q:"An ethical issue with 'predictive policing' algorithms is that they may:",o:["Eliminate all crime.","Be too fast.","Be too slow.","Require too much training data.","Reinforce existing biases in arrest data, leading to over-policing of certain communities."],a:4},
+{s:"Social Applications of Ethics",q:"Which of the following is a social benefit of open-source software?",o:["It is always more secure.","It has no ethical implications.","It is always free of bugs.","It is owned by a single corporation.","It promotes collaboration, transparency, and access to technology for all."],a:4},
+{s:"Social Applications of Ethics",q:"The 'right to be forgotten' (GDPR Article 17) allows individuals to:",o:["Erase their own hard drives.","Forget their passwords.","Be forgotten by their employer.","Delete system logs.","Request deletion of their personal data under certain conditions."],a:4},
+{s:"Social Applications of Ethics",q:"A social ethics issue in the gig economy (e.g., Uber, Mechanical Turk) is:",o:["The platforms are too efficient.","The apps are too colorful.","There are too many drivers.","The rating systems are too simple.","Worker classification, lack of benefits, and algorithmic management fairness."],a:4},
+{s:"Social Applications of Ethics",q:"'Filter bubbles' and 'echo chambers' on social media are ethical concerns because they:",o:["Increase advertising revenue.","Improve user engagement.","Are easy to program.","Have no impact.","Limit exposure to diverse viewpoints, potentially polarizing society."],a:4},
+{s:"Social Applications of Ethics",q:"A socially responsible computing professional should advocate for:",o:["Keeping all technology proprietary.","Maximizing data collection.","Eliminating user controls.","Avoiding all automation.","Accessibility for people with disabilities."],a:4},
+{s:"Social Applications of Ethics",q:"The ethical issue of 'surveillance capitalism' refers to:",o:["Monitoring employees in a capitalist economy.","Watching stock market traders.","Using cameras in stores.","Employee time tracking.","The business model of extracting data from users without meaningful consent."],a:4},
+{s:"Social Applications of Ethics",q:"Which of the following actions would promote digital inclusion?",o:["Designing websites that require the latest browser and high bandwidth.","Using only video content without captions.","Charging high subscription fees.","Requiring fingerprint authentication for all.","Providing accessible interfaces and supporting older devices."],a:4},
+{s:"Social Applications of Ethics",q:"The IEEE Code's Principle 1 (public welfare) has a strong social application because it:",o:["Only protects engineers.","Allows engineers to ignore public concerns.","Is optional.","Only applies to military projects.","Requires engineers to prioritize the safety and health of the public over other interests."],a:4},
+{s:"Social Applications of Ethics",q:"A social ethics issue with 'automated resume screening' AI is:",o:["It is too slow.","It is too expensive.","It requires too much human input.","It is never used.","It may discriminate against candidates from non-traditional backgrounds."],a:4},
+{s:"Social Applications of Ethics",q:"The concept of 'universal design' in software means:",o:["The software works on all operating systems.","The software is free.","The software is written in one language.","The software has a single color scheme.","The software is usable by people with the widest range of abilities and disabilities."],a:4},
+{s:"Social Applications of Ethics",q:"Which social good can computing professionals contribute to through pro bono work?",o:["Increasing company profits.","Reducing competition.","Avoiding ethical dilemmas.","Working fewer hours.","Helping non-profits and underserved communities with technology."],a:4},
+{s:"Social Applications of Ethics",q:"The ethical challenge of 'weaponized AI' includes:",o:["AI that speeds up computations.","AI that helps with weather forecasting.","AI that recommends movies.","AI that translates languages.","Autonomous weapons systems that may violate international humanitarian law."],a:4},
+{s:"Social Applications of Ethics",q:"A social implication of 'algorithmic management' (e.g., in warehouses) is:",o:["Workers have more autonomy.","Higher job satisfaction.","No change in work conditions.","Lower output.","Potential for dehumanizing work and extreme productivity pressure."],a:4},
+{s:"Social Applications of Ethics",q:"The ACM Code's principle to 'contribute to society and human well-being' encourages professionals to:",o:["Only work for profit-making companies.","Keep their skills secret.","Avoid any social engagement.","Focus solely on technical excellence.","Volunteer time to improve access to computing for disadvantaged groups."],a:4},
+{s:"Social Applications of Ethics",q:"'Digital rights' include:",o:["The right to free hardware.","The right to hack any system.","The right to unlimited bandwidth.","The right to free software.","The right to privacy, freedom of expression, and access to information online."],a:4},
+{s:"Social Applications of Ethics",q:"An ethical social application of blockchain beyond cryptocurrency is:",o:["Making all transactions anonymous.","Replacing all databases.","Mining with renewable energy only.","Speeding up transactions.","Providing transparent and tamper-proof records for supply chains or voting."],a:4},
+{s:"Social Applications of Ethics",q:"The 'social contract' for technology professionals implies that:",o:["They owe nothing to society.","They can do whatever they want.","Only governments have responsibilities.","Ethics are optional.","In exchange for societal trust and resources, they must act ethically and for the public good."],a:4},
+{s:"Social Applications of Ethics",q:"Which social issue is directly related to the 'black box' problem in AI?",o:["AI is too fast.","AI uses too much electricity.","AI requires large datasets.","AI is written in Python.","Lack of explainability can hide bias and reduce accountability."],a:4},
+{s:"Social Applications of Ethics",q:"A computing professional who designs a voting system must prioritize:",o:["Low cost over security.","Ease of use for administrators only.","Speed of counting above all.","Proprietary technology.","Security, verifiability, and accessibility to ensure democratic integrity."],a:4},
+{s:"Social Applications of Ethics",q:"The social ethics concept of 'distributive justice' in computing asks:",o:["Who writes the code?","How fast is the network?","What is the best programming language?","How many lines of code?","Are the benefits and burdens of technology fairly distributed across society?"],a:4},
+{s:"Social Applications of Ethics",q:"An example of a positive social application of computing is:",o:["Creating malware.","Designing addictive games.","Selling user data.","Building surveillance systems for oppressive regimes.","Developing telemedicine platforms to improve healthcare access."],a:4},
+{s:"Social Applications of Ethics",q:"The 'Precautionary Principle' in technology ethics suggests that:",o:["Innovation should always proceed regardless of risk.","No action is needed until harm occurs.","Only proven safe technologies should be used.","Risk is always acceptable.","When an activity raises threats of harm, precautionary measures should be taken even if some cause-and-effect relationships are not fully established."],a:4},
+{s:"Social Applications of Ethics",q:"A social ethics challenge with social media 'content moderation' is:",o:["There is too much content.","The platforms are too profitable.","Users post too little.","Moderation is fully automated.","Balancing free expression with the need to remove harmful content without bias."],a:4},
+{s:"Social Applications of Ethics",q:"Which of the following is a social responsibility of a tech company?",o:["Maximizing shareholder value at any cost.","Avoiding all government regulations.","Keeping security vulnerabilities secret forever.","Ignoring environmental impact.","Being transparent about data collection and respecting user privacy."],a:4},
+{s:"Social Applications of Ethics",q:"The ACM Code's encouragement to 'avoid harm' in a social context includes:",o:["Only physical harm.","Only financial harm.","Only reputational harm.","Only intentional harm.","Harm to individuals, groups, society, and the environment."],a:4},
+{s:"Social Applications of Ethics",q:"The ultimate goal of integrating ethics into computing practice is to:",o:["Slow down development.","Increase litigation.","Reduce innovation.","Make all software proprietary.","Ensure that technology serves humanity in a just, safe, and beneficial manner."],a:4},
+];
+
+function init(){answered=new Array(raw.length).fill(null);corr=0;wrng=0;prepMode=false;quizMode=false;quizSelections={};quizChecked={};}
+init();
+
+const sColors={
+  "Scope of Computing":"#1565c0",
+  "Professional Traits":"#2e7d32",
+  "ACM Code of Ethics":"#6a1b9a",
+  "IEEE-ACM Joint Code":"#4a148c",
+  "IEEE Code of Ethics":"#bf360c",
+  "Accountability & Auditing":"#e65100",
+  "Social Applications of Ethics":"#00695c"
+};
+
+function render(){
+  let h='';
+  for(let i=0;i<raw.length;i++){
+    const q=raw[i],ans=answered[i];
+    const col=sColors[q.s]||'#1565c0';
+    h+=`<div class="qcard" id="qc${i}">
+      <span class="section-badge" style="background:${col}15;color:${col}">${q.s}</span>
+      <div class="qnum">Question ${i+1} / ${raw.length}</div>
+      <div class="qtxt">${q.q}</div>
+      <div class="opts">`;
+
+    if(quizMode){
+      // Quiz mode: click karo, foran result milega
+      const chk=quizChecked[i];
+      const sel=quizSelections[i];
+      q.o.forEach((o,j)=>{
+        let cls='quiz-opt-btn';
+        if(chk){
+          if(j===q.a) cls+=' result-corr';
+          else if(j===sel&&sel!==q.a) cls+=' result-wrng';
+        }
+        h+=`<button class="${cls}" onclick="quizMark(${i},${j})"${chk?' disabled':''}>${K[j]}) ${o}</button>`;
+      });
+      h+='</div>';
+      if(chk){
+        const correct=sel===q.a;
+        h+=correct?`<div class="fb ok">✓ Correct!</div>`:`<div class="fb no">✗ Wrong! Correct answer: ${K[q.a]}) ${q.o[q.a]}</div>`;
+      }
+    } else {
+      // Normal or Prep mode
+      q.o.forEach((o,j)=>{
+        let c='opt';
+        if(prepMode){
+          if(j===q.a) c+=' prep-corr';
+        } else {
+          if(ans!==null){if(j===q.a)c+=' shwc';else if(j===ans&&ans!==q.a)c+=' wrng';}
+        }
+        const disabled=(ans!==null||prepMode)?' disabled':'';
+        h+=`<button class="${c}" onclick="pick(${i},${j})"${disabled}><span class="ok">${K[j]})</span>${o}</button>`;
+      });
+      h+='</div>';
+      if(!prepMode&&ans!==null){h+=ans===q.a?`<div class="fb ok">✓ Correct!</div>`:`<div class="fb no">✗ Wrong! Correct answer: ${K[q.a]}) ${q.o[q.a]}</div>`;}
+    }
+    h+='</div>';
+  }
+  document.getElementById('qa').innerHTML=h;
+  document.getElementById('scor').textContent=corr;
+  document.getElementById('swrg').textContent=wrng;
+  const done=answered.filter(a=>a!==null).length;
+  document.getElementById('prog').style.width=Math.round(done/raw.length*100)+'%';
+  document.getElementById('pginfo').textContent=`Total Questions: ${raw.length}`;
+}
+
+function quizMark(i,j){
+  if(quizChecked[i])return;
+  quizChecked[i]=true;
+  quizSelections[i]=j;
+  const q=raw[i];
+  const correct=(j===q.a);
+  if(correct) corr++; else wrng++;
+  document.getElementById('scor').textContent=corr;
+  document.getElementById('swrg').textContent=wrng;
+  const done=Object.keys(quizChecked).length;
+  document.getElementById('prog').style.width=Math.round(done/raw.length*100)+'%';
+
+  const card=document.getElementById('qc'+i);
+  const btns=card.querySelectorAll('.quiz-opt-btn');
+  btns.forEach((b,idx)=>{
+    b.className='quiz-opt-btn';
+    if(idx===q.a) b.classList.add('result-corr');
+    else if(idx===j&&!correct) b.classList.add('result-wrng');
+    b.disabled=true;
+  });
+  const fb=document.createElement('div');
+  fb.className=correct?'fb ok':'fb no';
+  fb.textContent=correct?'✓ Correct!':`✗ Wrong! Correct answer: ${K[q.a]}) ${q.o[q.a]}`;
+  card.appendChild(fb);
+}
+
+function pick(i,j){
+  if(answered[i]!==null)return;
+  answered[i]=j;
+  if(j===raw[i].a)corr++;else wrng++;
+  render();
+  document.getElementById('qc'+i).scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function togglePrep(){
+  if(quizMode){quizMode=false;document.getElementById('qzmBtn').classList.remove('active');}
+  prepMode=!prepMode;
+  document.getElementById('prepBtn').classList.toggle('active',prepMode);
+  const banner=document.getElementById('modeBanner');
+  banner.innerHTML=prepMode?'<div class="mode-banner prep">📖 Preparation Mode — All correct answers are highlighted</div>':'';
+  render();
+}
+
+function toggleQuiz(){
+  if(prepMode){prepMode=false;document.getElementById('prepBtn').classList.remove('active');}
+  quizMode=!quizMode;
+  document.getElementById('qzmBtn').classList.toggle('active',quizMode);
+  const banner=document.getElementById('modeBanner');
+  banner.innerHTML=quizMode?'<div class="mode-banner quiz">✏️ Quiz Mode — Click an option to instantly see if you are right or wrong</div>':'';
+  render();
+}
+
+function resetAll(){
+  init();
+  document.getElementById('prepBtn').classList.remove('active');
+  document.getElementById('qzmBtn').classList.remove('active');
+  document.getElementById('modeBanner').innerHTML='';
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+render();
+</script>
+</script>
+</body>
+</html>
